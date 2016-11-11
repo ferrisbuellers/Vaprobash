@@ -32,21 +32,23 @@ else
     echo ">>> Installing PHP $PHP_VERSION"
 
     sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4F4EA0AAE5267A6C
-
-    if [ $PHP_VERSION == "5.5" ]; then
-        # Add repo for PHP 5.5
-        sudo add-apt-repository -y ppa:ondrej/php5
-    else
-        # Add repo for PHP 5.6
-        sudo add-apt-repository -y ppa:ondrej/php5-5.6
-    fi
+    
+    sudo add-apt-repository -y ppa:ondrej/php
 
     sudo apt-key update
     sudo apt-get update
 
+    if [ $PHP_VERSION == "7.0" ]; then
+        sudo apt-get install php7.0
+    else if [ $PHP_VERSION == "5.6" ]; then
+        sudo apt-get install php5.6
+    else
+        # Install for PHP 5.5
+        sudo apt-get install -qq php5-cli php5-fpm php5-mysql php5-pgsql php5-sqlite php5-curl php5-gd php5-gmp php5-mcrypt php5-memcached php5-imagick php5-intl php5-xdebug
+    fi
+
     # Install PHP
     # -qq implies -y --force-yes
-    sudo apt-get install -qq php5-cli php5-fpm php5-mysql php5-pgsql php5-sqlite php5-curl php5-gd php5-gmp php5-mcrypt php5-memcached php5-imagick php5-intl php5-xdebug
 
     # Set PHP FPM to listen on TCP instead of Socket
     sudo sed -i "s/listen =.*/listen = 127.0.0.1:9000/" /etc/php5/fpm/pool.d/www.conf
