@@ -39,9 +39,9 @@ else
     sudo apt-get update
 
     if [ $PHP_VERSION == "7.0" ]; then
-        sudo apt-get install php7.0
+        sudo apt-get install -qq php7.0
     else if [ $PHP_VERSION == "5.6" ]; then
-        sudo apt-get install php5.6
+        sudo apt-get install -qq php5.6
     else
         # Install for PHP 5.5
         sudo apt-get install -qq php5-cli php5-fpm php5-mysql php5-pgsql php5-sqlite php5-curl php5-gd php5-gmp php5-mcrypt php5-memcached php5-imagick php5-intl php5-xdebug
