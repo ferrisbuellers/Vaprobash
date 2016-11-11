@@ -40,7 +40,7 @@ else
 
     if [ $PHP_VERSION == "7.0" ]; then
         sudo apt-get install -qq php7.0 php7.0-fpm php7.0-mysql php7.0-pgsql php7.0-sqlite php7.0-curl php7.0-gd php7.0-gmp php7.0-mcrypt php7.0-memcached php7.0-imagick php7.0-intl php7.0-xdebug
-    else if [ $PHP_VERSION == "5.6" ]; then
+    elif [ $PHP_VERSION == "5.6" ]; then
         sudo apt-get install -qq php5.6 php5.6-fpm php5.6-mysql php5.6-pgsql php5.6-sqlite php5.6-curl php5.6-gd php5.6-gmp php5.6-mcrypt php5.6-memcached php5.6-imagick php5.6-intl php5.6-xdebug
 
         # Install PHP
